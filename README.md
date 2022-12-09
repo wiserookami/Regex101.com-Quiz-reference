@@ -132,7 +132,7 @@
 	I'm trying to match bit sequences which are alternating between 1 and 0 and never have more than one 1 or 0 in a row. They can be single digits. Try matching this: 0101010, 1010101010 or 1
 
 	参考: /\b(?:10?|1?(?:01)+0?|01?)\b/g
-	参考: /\b(?<!-)(?:100|\d\d|\d)\b/g
+	参考: /\b(?:(?<!1)1|(?<!0)0)+\b/g
 	代码: re.findall(r"\b(?:10?|1?(?:01)+0?|01?)\b", "...", re.S)
 
 ## Task 14: Spam Filter ##
