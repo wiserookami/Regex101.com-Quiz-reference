@@ -124,6 +124,7 @@
 	Could you help me validate my input and only match positive integers between the range of 0 and 100? There can be several numbers in a string which I would want to retrieve. Try out these example strings: Sam has 200 apples. He gives Todd 20 and Mary 125. and The weather is -5 C today, but will be +5 C tomorrow.
 
 	参考: /(?:\+|^|\s)(?:\d|[1-9]\d|100)(?:\s|$)/g
+	参考: /\b(?<!-)(?:100|\d\d|\d)\b/g
 	代码: re.findall(r"(?:\+|^|\s)(?:\d|[1-9]\d|100)(?:\s|$)", "...", re.S)
 
 ## Task 13: Match alternating 0s and 1s in any order ##
@@ -131,6 +132,7 @@
 	I'm trying to match bit sequences which are alternating between 1 and 0 and never have more than one 1 or 0 in a row. They can be single digits. Try matching this: 0101010, 1010101010 or 1
 
 	参考: /\b(?:10?|1?(?:01)+0?|01?)\b/g
+	参考: /\b(?:(?<!1)1|(?<!0)0)+\b/g
 	代码: re.findall(r"\b(?:10?|1?(?:01)+0?|01?)\b", "...", re.S)
 
 ## Task 14: Spam Filter ##
@@ -138,6 +140,7 @@
 	Match a string that contains any of the following substrings: http://, www., porn, or credit card. But don't match the text if it contains one of: not allowed, filter, or mirc. Don't use word boundaries (anywhere in the text is fine). If you need help, try reading this.
 
 	参考: /^(?!.*(?:not allowed|filter|mirc).*).*(?:http:\/\/|www\.|porn|credit card).*$/i
+	参考: /^(?!.*(?:not allowed|filter|mirc)).*(?:http:\/\/|www\.|porn|credit card)/i
 	代码: re.search(r"^(?!.*(?:not allowed|filter|mirc).*).*(?:http://|www\.|porn|credit card).*$", "...", re.IGNORECASE)
 
 ## Task 15: Not Surrounded By Digits ##
@@ -145,6 +148,7 @@
 	Replace every . (dot) with a - (hyphen) except when the dot is surrounded by digits. E.g.: .a.b.1.2. should become -a-b-1.2-
 
 	参考: s/(?!\.\d)\.|\.(?<!\d\.)/-/g
+	参考: /\.(?!\d)|(?<!\d)\./g
 	代码: re.sub(r"(?!\.\d)\.|\.(?<!\d\.)", "-", "...", flags=re.S)
 
 ## Task 16: Repeated Words ##
